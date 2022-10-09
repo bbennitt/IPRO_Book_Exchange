@@ -11,7 +11,7 @@ After further thought and discussion, it was decided it's best to create 6 diffe
 
 A description of each of the tables is below.
 1. **user:** Each user has one entry in the user table with a variety of information. 
-- *PK:* 'id'
+  - *PK:* 'id'
 
 2. **book:** Each book has one entry in the book table with seller field as the id of the seller. 
 - *PK:* 'id' 
