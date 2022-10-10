@@ -42,28 +42,28 @@ A description of each of the tables is below.
 - This schema is a work in progress and does not have to be final. As we see fit we can add tables, fields, views, etc.
 
 
-## Database Creation Code
+## Database Creation Code <br/><br/>
 
-**Run the code below in a MySQL prompt to create the appropriate tables and columns**
-*Notes:* 
-    - Make sure to edit the code in this file and update other members if we do change the schema so development is on the same page
-    - There is an SQL script included in the GitHub with the code to create the tables in the database and populate with testing data
+**Run the code below in a MySQL prompt to create the appropriate tables and columns** <br/><br/>
+*Notes:*  <br/><br/>
+    - Make sure to edit the code in this file and update other members if we do change the schema so development is on the same page <br/><br/>
+    - There is an SQL script included in the GitHub with the code to create the tables in the database and populate with testing data <br/><br/>
 
-Code to create user table:
-CREATE TABLE user (
-    id int NOT NULL AUTO_INCREMENT,
-    first_name varchar(100) NOT NULL,
-    last_name varchar(100) NOT NULL,
-    phone_number varchar(20) NOT NULL,
-    email varchar(100) NOT NULL,
-    city varchar(100) NOT NULL,
-    state varchar(100) NOT NULL,
-    school varchar(100) NOT NULL,
-    year_in_school varchar(100),
-    major varchar(100),
-    PRIMARY KEY (id),
-    FOREIGN KEY (school) REFERENCES school(name)
-);
+Code to create user table: <br/><br/>
+CREATE TABLE user ( <br/><br/>
+    id int NOT NULL AUTO_INCREMENT, <br/><br/>
+    first_name varchar(100) NOT NULL, <br/><br/>
+    last_name varchar(100) NOT NULL, <br/><br/>
+    phone_number varchar(20) NOT NULL, <br/><br/>
+    email varchar(100) NOT NULL, <br/><br/>
+    city varchar(100) NOT NULL, <br/><br/>
+    state varchar(100) NOT NULL, <br/><br/>
+    school varchar(100) NOT NULL, <br/><br/>
+    year_in_school varchar(100), <br/><br/>
+    major varchar(100), <br/><br/>
+    PRIMARY KEY (id), <br/><br/>
+    FOREIGN KEY (school) REFERENCES school(name) <br/><br/>
+); <br/><br/>
 
 
 Code to create book table:
@@ -149,4 +149,4 @@ INSERT INTO user (first_name, last_name, phone_number, email, city, state, schoo
 
 
 INSERT INTO book VALUES
-  ('978-0857292988', 'Introduction to Artificial Intelligence (Undergraduate Topics in Computer Science)', 'First', 'Wolfgang', 'Ertel', 'Computer Science', 'Artificial Intelligence')
+    ('978-0857292988', 'Introduction to Artificial Intelligence (Undergraduate Topics in Computer Science)', 'First', 'Wolfgang', 'Ertel', 'Computer Science', 'Artificial Intelligence')
