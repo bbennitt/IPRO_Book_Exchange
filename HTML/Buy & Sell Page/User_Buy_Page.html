@@ -57,6 +57,12 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+      .card-img-top {
+    width: 100%;
+    object-fit: contain;
+    background-color: #e9ecef;
+}
     </style>
   </head>
   <body>
@@ -70,7 +76,7 @@
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="User_Buy_Page.html">Buy</a>
             <a class="nav-link disabled">Sell</a>
-            <a class="nav-link disabled">Profile</a>
+            <a class="nav-link disabled">Account</a>
           </div>
         </div>
       </div>
@@ -80,20 +86,23 @@
         <div class="row">
           <div class="mx-auto">
             <div class="input-group input-group-lg ">
-              <input type="text" class="form-control" placeholder="Search for Book Title" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" placeholder="Search for Book Title" aria-label="Large" aria-describedby="inputGroup-sizing-sm" value="cost management a strategic emphasis" >
+            </div>
+            <div class="form-check form-check-inline pt-1">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">Book Title</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Filter Option #1</label>
+              <label class="form-check-label" for="inlineCheckbox1">ISBN #</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Filter Option #2</label>
+              <label class="form-check-label" for="inlineCheckbox1">Condition</label>
             </div>
           </div>
         </div>
       </section>
-    
       <div class="album py-5">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -101,19 +110,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
+                    <span class="badge text-bg-success">Used - Hardcover</span>
+                    <small class="text-muted">8th Edition</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Cost Management: A Strategic Emphasis</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <img src="https://i.ebayimg.com/images/g/B7YAAOSwPZBit6CF/s-l500.jpg" height="400" class="card-img-top " alt="...">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">9781259917028</small>
+                    <small class="text-muted">Blocher, Stout</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$54.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/9781259917028-1.html" class="btn btn-primary" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -122,19 +136,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
+                    <span class="badge text-bg-success">Used - Loose Leaf</span>
+                    <small class="text-muted">8th Edition</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Cost Management A Strategic Emphasis</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <img src="https://i.ebayimg.com/images/g/CZcAAOSwVmphfz5a/s-l500.jpg" height="400" class="card-img-top " alt="...">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">9781259917028</small>
+                    <small class="text-muted">Blocher, Stout</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$35.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary disabled" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -143,41 +162,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
+                    <span class="badge text-bg-success">Used - Paperback</span>
+                    <small class="text-muted">9th Edition</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Cost Management A Strategic Emphasis</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <img src="https://i.ebayimg.com/images/g/rF8AAOSwrqth37Sz/s-l300.jpg" height="400" class="card-img-top " alt="...">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">9781265714550</small>
+                    <small class="text-muted">Blocher, Stout</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$70.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary disabled" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -186,19 +188,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
+                    <span class="badge text-bg-success">Used - Hardcover</span>
+                    <small class="text-muted">7th Edition</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Cost Management A Strategic Emphasis</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <img src="https://i.ebayimg.com/images/g/qmIAAOSw7U5jKS5e/s-l500.jpg" height="400" class="card-img-top " alt="...">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">9780077733773</small>
+                    <small class="text-muted">Blocher, Stout</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$50.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary disabled" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -207,41 +214,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
                     <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">Edition #</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">ISBN #</small>
+                    <small class="text-muted">Author Name</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$0.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -250,19 +240,24 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">Edition #</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">ISBN #</small>
+                    <small class="text-muted">Author Name</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$0.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button">View Details</a>
                   </div>
                 </div>
               </div>
@@ -271,19 +266,76 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">Edition #</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">ISBN #</small>
+                    <small class="text-muted">Author Name</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$0.00 <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">Edition #</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Book Title</small>
+                  </div>
+                </div>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">ISBN #</small>
+                    <small class="text-muted">Author Name</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$0.00 <small class="text-muted">USD</small></h1>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted">Edition #</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Book Title</small>
+                  </div>
+                </div>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">ISBN #</small>
+                    <small class="text-muted">Author Name</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title">$0.00 <small class="text-muted">USD</small></h1>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button">View Details</a>
                   </div>
                 </div>
               </div>
