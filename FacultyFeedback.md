@@ -38,6 +38,10 @@
 - Demo was a static local page so not really a coded demo
 
 ## Week 9 ##
+- Thanks for setting the names as the tabs
+- Think demo of your product when I arrive for sprint review - who is going to demo
+- Make sure board is up to date with work being done
+- Think of using labels to identify the stories that need to be completed to get through scenario one
 
 ## Week 10 ##
 
