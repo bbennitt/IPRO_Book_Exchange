@@ -14,6 +14,9 @@ class School(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.school_name
+
 class User(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -25,6 +28,9 @@ class User(models.Model):
     year = models.IntegerField(default=0)
     major = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
 class Book(models.Model):
     ISBN = models.CharField(max_length=100, primary_key=True)
     title = models.CharField(max_length=255)
@@ -34,6 +40,9 @@ class Book(models.Model):
     subject = models.CharField(max_length=100)
     topic = models.CharField(max_length=100)
 
+    def __str__(self):
+        return "ISBN: " + self.ISBN + "\nTitle: " + self.title
+
 class BookForSale(models.Model):
     ISBN = models.ForeignKey(Book, on_delete=models.RESTRICT)
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,9 +51,15 @@ class BookForSale(models.Model):
     comment = models.TextField()
     available = models.BooleanField(default=True)
 
+    def __str__(self):
+        return "ISBN: " + self.ISBN + "\nSeller: " + self.seller
+
 class PinnedBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book_listing = models.ForeignKey(BookForSale, on_delete=models.RESTRICT)
+
+    def __str__(self):
+        return self.book_listing
 
     class Meta:
         constraints = [
@@ -58,6 +73,9 @@ class Transaction(models.Model):
     book_listing = models.ForeignKey(BookForSale, on_delete=models.PROTECT)
     time_sold = models.DateField('Transaction Date')
 
+    def __str__(self):
+        return self.book_listing +"\n" + str(self.time_sold)
+
     class Meta:
         constraints = [
             models.UniqueConstraint(
@@ -70,6 +88,9 @@ class SchoolUsesBook(models.Model):
     ISBN = models.ForeignKey(Book, on_delete=models.CASCADE)
     department = models.CharField(max_length=100)
     course = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.school_name + " uses " + self.ISBN
 
     class Meta:
         constraints = [
