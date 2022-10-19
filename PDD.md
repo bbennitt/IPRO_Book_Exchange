@@ -2,7 +2,8 @@
 
 ## Problem Statements
 
-College students can use our solution to help them buy and sell used textbooks for better prices than are offered by existing e-retailers. As a result of lower buying and higher selling prices, students are more likely to purchase and read textbooks, increasing their grades and overall knowledge in the process.
+With the ever increasing cost of attending college, students are struggling to justify spending hundreds of extra dollars every semester on new textbooks that they will use for one class and then never look at again. To aid in reducing the overall costs of required textbooks, college students can use our solution to help them buy and sell used textbooks for better prices than are offered by campus bookstores and existing e-retailers. 
+
 
 ## Customer
 ### Description

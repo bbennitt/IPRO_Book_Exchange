@@ -4,60 +4,9 @@
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css\styles.css" rel="stylesheet">
+    <link href="css\user_buy_page.css" rel="stylesheet">
     <title>Textbook Exchange - Buy</title>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -70,7 +19,7 @@
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="User_Buy_Page.html">Buy</a>
             <a class="nav-link disabled">Sell</a>
-            <a class="nav-link disabled">Profile</a>
+            <a class="nav-link disabled">Account</a>
           </div>
         </div>
       </div>
@@ -80,20 +29,23 @@
         <div class="row">
           <div class="mx-auto">
             <div class="input-group input-group-lg ">
-              <input type="text" class="form-control" placeholder="Search for Book Title" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" placeholder="Search for Book Title" aria-label="Large" aria-describedby="inputGroup-sizing-sm" >
+            </div>
+            <div class="form-check form-check-inline pt-1">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">Book Title</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Filter Option #1</label>
+              <label class="form-check-label" for="inlineCheckbox1">ISBN #</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Filter Option #2</label>
+              <label class="form-check-label" for="inlineCheckbox1">Condition</label>
             </div>
           </div>
         </div>
       </section>
-    
       <div class="album py-5">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -101,197 +53,36 @@
               <div class="card shadow-sm">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
+                    <span class="badge text-bg-success" id="badge-condition">{Condition}</span>
+                    <small class="text-muted" id="small-edition">{Edition_#}</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted" id="small-book-title">{Book_Title}</small>
                   </div>
                 </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
+                <img src="https://via.placeholder.com/400" height="420" class="card-img-top" id="img-thumbnail">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
+                    <small class="text-muted" id="small-isbn">{ISBN_#}</small>
+                    <small class="text-muted" id="small-author">{Author_Name}</small>
                   </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
+                  <div class="d-flex justify-content-between align-items-center py-2">
+                    <h3 class="card-title" id="h3-price">${0.00} <small class="text-muted">USD</small></h1>
+                  </div>
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
+                    <a href="Book_Details/Book_ID.html" class="btn btn-primary" type="button" id="button-details">View Details</a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Book Title</small>
-                    <small class="text-muted">ISBN #</small>
-                  </div>
-                </div>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail of Book</text></svg>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">Edition #</small>
-                    <span class="badge text-bg-success">Condition</span>
-                  </div>
-                  <p class="card-text">This is a book Description where the seller will be able to include additional information.</p>
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">View Details</button>
-                  </div>
-                </div>
-              </div>
+              <div class="card h-100"></div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>

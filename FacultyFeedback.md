@@ -24,8 +24,18 @@
 - Sprint lead please lead the team in their first retro
 
 ## Week 7 ##
+- 10/11 is mid-term presentation.  Focus is on the demo with a simple deck walkthrough
+- Work through who is presenting what and in what order
+- Know what are you demoing and in what order (on what machine)
+- Please add an item to your boards to do this github.com/mschray/IPro497Sample/blob/main/Course%20Content/SprintReviewProjectViews.md
 
 ## Week 8 ##
+- Problem statement should open with a problem - "textbooks are so expensively they are barely affordable.."
+- You are a two sided exchange with buyers and seller
+- Like the bulleted form of the user scenario (and the getting money for new textbooks)
+- Transaction fee means you would have build an payment system - so exchange is a good call.
+- Orange on yellow seems hard to read to me
+- Demo was a static local page so not really a coded demo
 
 ## Week 9 ##
 
