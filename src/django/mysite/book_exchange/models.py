@@ -52,14 +52,14 @@ class BookForSale(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        return "ISBN: " + self.ISBN + "\nSeller: " + self.seller
+        return "ISBN: " + self.ISBN.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
 
 class PinnedBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book_listing = models.ForeignKey(BookForSale, on_delete=models.RESTRICT)
 
     def __str__(self):
-        return self.book_listing
+        return "User: " + self.user.__str__() + " pinned " + self.book_listing.__str__()
 
     class Meta:
         constraints = [
@@ -74,7 +74,7 @@ class Transaction(models.Model):
     time_sold = models.DateField('Transaction Date')
 
     def __str__(self):
-        return self.book_listing +"\n" + str(self.time_sold)
+        return self.book_listing.__str__() + " sold on " + str(self.time_sold) + " to " + self.buyer.__str__()
 
     class Meta:
         constraints = [
@@ -90,7 +90,7 @@ class SchoolUsesBook(models.Model):
     course = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.school_name + " uses " + self.ISBN
+        return self.school_name.__str__() + " uses " + self.ISBN.__str__()
 
     class Meta:
         constraints = [
