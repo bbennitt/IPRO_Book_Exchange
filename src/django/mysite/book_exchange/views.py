@@ -19,43 +19,29 @@ from .models import Book, BookForSale, User
 #class SellView(generic.DetailView):
  #   template_name = 'polls/results.html'
 
-def login(request):
+class LoginView(generic.ListView):
+    model = User
+    template_name = 'book_exchange/signin.html'
+
     #books_list = Book.objects.order_by('ISBN')
     #output = ", ".join([b.title for b in books_list])
     #return HttpResponse('The books currently in the database are: %s' % output)
-    return render(request, 'book_exchange/signin.html')
 
-def main(request, user_id):
-    try:
-        user = User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        raise Http404("User does not exist")
-    return render(request, 'book_exchange/mainpage.html', {'user': user})
-    #return HttpResponse("You're looking at the main page for user %s." % user_id)
+class MainView(generic.DetailView):
+    model = User
+    template_name = 'book_exchange/mainpage.html'
 
-def buy(request, user_id):
-    try:
-        user = User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        raise Http404("User does not exist")
-    return render(request, 'book_exchange/User_Buy_Page.html', {'user': user})
-    #return HttpResponse("You're looking at the buy page for user %s." % user_id)
+class BuyView(generic.DetailView):
+    model = User
+    template_name = 'book_exchange/User_Buy_Page.html'
 
-def sell(request, user_id):
-    try:
-        user = User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        raise Http404("User does not exist")
-    return render(request, 'book_exchange/User_Sell_Forum.html', {'user': user})
-    #return HttpResponse("You're looking at the sell page for user %s." % user_id)
+class SellView(generic.DetailView):
+    model = User
+    template_name = 'book_exchange/User_Sell_Forum.html'
 
-def profile(request, user_id):
-    try:
-        user = User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        raise Http404("User does not exist")
-    return render(request, 'book_exchange/profile.html', {'user': user})
-    #return HttpResponse("You're looking at the profile page for user %s." % user_id)
+class ProfileView(generic.DetailView):
+    model = User
+    template_name = 'book_exchange/profile.html'
 
 def book_info(request, user_id, book_for_sale_id):
     try:
