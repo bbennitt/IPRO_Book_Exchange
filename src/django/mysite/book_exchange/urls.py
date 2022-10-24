@@ -9,6 +9,7 @@ urlpatterns = [
     path('<user_id>/buy/', views.buy, name='buy'),
     path('<user_id>/sell/', views.sell, name='sell'),
     path('<user_id>/profile/', views.profile, name='profile'),
+    path('<user_id>/buy/<book_for_sale_id>/', views.book_info, name='book_info'),
     #path('<user_id>/buy/<book_id>', , name='sell'),
     #path('<user_id>/sell/', views.SellView.as_view(), name='sell'),
 ]
