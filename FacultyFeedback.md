@@ -44,6 +44,8 @@
 - Think of using labels to identify the stories that need to be completed to get through scenario one
 
 ## Week 10 ##
+- Two demos - you are killing it
+- Stories need acceptance criterion
 
 ## Week 11 ##
 
