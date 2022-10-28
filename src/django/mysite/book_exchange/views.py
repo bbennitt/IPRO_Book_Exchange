@@ -4,7 +4,14 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Book, BookForSale, User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import serializers
+from .serializers import ItemSerializer
+
+from .models import Book, BookForSale, School, User
+
 
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
@@ -56,3 +63,30 @@ def book_info(request, user_id, book_for_sale_id):
 
     return render(request, 'book_exchange/Book_ID.html', {'user': user, 'book': book})
 
+@api_view(['GET'])
+def ApiOverview(request):
+    api_urls = {
+        'all_items': '/',
+        'Search by School Name': '/?school_name=category_name',
+        'Search by City': '/?city=category_name',
+        'Search by State': '/?state=category_name',
+        'Add': '/create',
+        'Update': '/update/pk',
+        'Delete': '/item/pk/delete'
+    }
+  
+    return Response(api_urls)
+
+@api_view(['POST'])
+def add_school(request):
+    school = ItemSerializer(data=request.data)
+
+    #validate for existing data
+    if School.objects.filter(**request.data).exists():
+        raise serializers.ValidationError('This data is already exists')
+
+    if school.is_valid():
+        school.save()
+        return Response(school.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)

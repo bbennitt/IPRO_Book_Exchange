@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'book_exchange',
-        'USER': 'user1',
-        'PASSWORD': 'GroupE3!',
+        'USER': 'root', #Original: user1                #FOR ALI: root
+        'PASSWORD': 'password', #Original: GroupE3!     #FOR ALI: password
         'HOST':'localhost',
         'PORT':'3306',
     }
