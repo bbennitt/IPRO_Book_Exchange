@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import serializers
-from .serializers import ItemSerializer
+from .serializers import SchoolSerializer
 
 from .models import Book, BookForSale, School, User
 
@@ -66,27 +66,60 @@ def book_info(request, user_id, book_for_sale_id):
 @api_view(['GET'])
 def ApiOverview(request):
     api_urls = {
-        'all_items': '/',
+        'all_schools': '/',
         'Search by School Name': '/?school_name=category_name',
         'Search by City': '/?city=category_name',
         'Search by State': '/?state=category_name',
-        'Add': '/create',
-        'Update': '/update/pk',
-        'Delete': '/item/pk/delete'
+        'Add': '/book_exchange/api/create/',
+        'Update': '/book_exchange/api/update/pk',
+        'Delete': '/book_exchange/api/school/pk/delete'
     }
   
     return Response(api_urls)
 
+@api_view(['GET'])
+def view_schools(request):
+    
+    # checking for the parameters from the URL
+    if request.query_params:
+        schools = School.objects.filter(**request.query_param.dict())
+    else:
+        schools = School.objects.all()
+  
+    # if there is something in items else raise error
+    if schools:
+        data = SchoolSerializer(schools)
+        return Response(data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 @api_view(['POST'])
-def add_school(request):
-    school = ItemSerializer(data=request.data)
+def add_schools(request):
+    school = SchoolSerializer(data=request.data)
 
     #validate for existing data
     if School.objects.filter(**request.data).exists():
-        raise serializers.ValidationError('This data is already exists')
+        raise serializers.ValidationError('This data already exists')
 
     if school.is_valid():
         school.save()
         return Response(school.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['POST'])
+def update_schools(request, pk):
+    school = School.objects.get(pk=pk)
+    data = SchoolSerializer(instance=school, data=request.data)
+  
+    if data.is_valid():
+        data.save()
+        return Response(data.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['DELETE'])
+def delete_schools(request, pk):
+    school = get_object_or_404(School, pk=pk)
+    school.delete()
+    return Response(status=status.HTTP_202_ACCEPTED)
