@@ -48,6 +48,8 @@
 - Stories need acceptance criterion
 
 ## Week 11 ##
+- Code walk through while interest not necessary just the working demo
+- Think about the stories that you need to complete for the final demo
 
 ## Week 12 ##
 
