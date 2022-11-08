@@ -1,24 +1,32 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework import routers
+
 from . import views
-#from django.mysite import book_exchange
 
 app_name = 'book_exchange'
 
+router = routers.DefaultRouter()
+router.register(r'school', views.SchoolViewSet)
+router.register(r'user', views.UserViewSet)
+router.register(r'book', views.BookViewSet)
+router.register(r'book_for_sale', views.BookForSaleViewSet)
+router.register(r'pinned_book', views.PinnedBookViewSet)
+router.register(r'transaction', views.TransactionViewSet)
+router.register(r'school_uses_book', views.SchoolUsesBookViewSet)
+
+
+
 urlpatterns = [
     path('', views.LoginView.as_view(), name='login'),
-    path('api/', views.ApiOverview, name='api-home'),
-    path('api/all/', views.view_schools, name='view-schools'),
-    path('api/create/', views.add_schools, name='add-schools'),
-    path('api/update/<int:pk>/', views.update_schools, name='update-schools'),
-    path('api/school/<int:pk>/delete/', views.delete_schools, name='delete-schools'),
+    path('api/', include(router.urls)),
+    path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('<int:pk>/', views.MainView.as_view(), name='main'),
     path('<int:pk>/buy/', views.BuyView.as_view(), name='buy'),
     path('<int:pk>/sell/', views.SellView.as_view(), name='sell'),
     path('<int:pk>/profile/', views.ProfileView.as_view(), name='profile'),
     path('<user_id>/buy/<book_for_sale_id>/', views.book_info, name='book_info'),
-    #path('api/', include(book_exchange.urls)),
 
     #path('<user_id>/buy/<book_id>', , name='sell'),
     #path('<user_id>/sell/', views.SellView.as_view(), name='sell'),
