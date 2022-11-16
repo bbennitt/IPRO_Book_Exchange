@@ -39,6 +39,7 @@ class Book(models.Model):
     author_last_name = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
     topic = models.CharField(max_length=100)
+    cover = models.ImageField(upload_to="cover/")
 
     def __str__(self):
         return "ISBN: " + self.ISBN

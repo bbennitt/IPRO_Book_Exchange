@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from rest_framework import routers
 
@@ -31,4 +33,4 @@ urlpatterns = [
 
     #path('<user_id>/buy/<book_id>', , name='sell'),
     #path('<user_id>/sell/', views.SellView.as_view(), name='sell'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
