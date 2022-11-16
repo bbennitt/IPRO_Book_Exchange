@@ -12,7 +12,6 @@ from .serializers import BookForSaleSerializer, PinnedBookSerializer, SchoolSeri
 
 from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale #, PinnedBook, Transaction, SchoolUsesBook
 
-
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
 # we are going to have 
@@ -62,7 +61,8 @@ def book_info(request, user_id, book_for_sale_id):
         raise Http404("Book for sale does not exist")
 
     try:
-        books = Book.objects.get(pk=43433454)
+        book_info = BookForSale.objects.get(pk=book_for_sale_id)
+        books = Book.objects.get(pk=book_info.ISBN)
     except Book.DoesNotExist:
         raise Http404("Book not part of database")
 
@@ -77,10 +77,6 @@ def browse_books(request, pk):
 
     mylist = zip(book, books)
     return render(request, 'book_exchange/User_Buy_Page.html', {'mylist' : mylist})
-
-
-
-
 
 """
 API CALLS, FOR DATABASE COMMUNICATION

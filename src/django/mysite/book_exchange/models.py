@@ -41,7 +41,7 @@ class Book(models.Model):
     topic = models.CharField(max_length=100)
 
     def __str__(self):
-        return "ISBN: " + self.ISBN
+        return self.ISBN
 
 class BookForSale(models.Model):
     ISBN = models.ForeignKey(Book, on_delete=models.RESTRICT)
@@ -50,7 +50,7 @@ class BookForSale(models.Model):
     price = models.FloatField(default=0)
     comment = models.TextField()
     available = models.BooleanField(default=True)
-    # id = models.CharField(max_length=1000, primary_key=True, unique=True)
+    id = models.CharField(max_length=1000, primary_key=True, unique=True)
 
     def __str__(self):
         return "ISBN: " + self.ISBN.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
