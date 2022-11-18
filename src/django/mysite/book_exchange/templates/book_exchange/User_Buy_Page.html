@@ -64,7 +64,8 @@
                     <small class="text-muted" id="small-book-title">{{ p2.title }}</small>
                   </div>
                 </div>
-                <img src="https://via.placeholder.com/400" height="420" class="card-img-top" id="img-thumbnail">
+                <!--<img src="{% static 'book_exchange/media/default.jpg' %}" height="420" class="card-img-top" id="img-thumbnail"/>-->
+                <img src="{{ p2.cover.url }}" height="420" class="card-img-top" id="img-thumbnail"/>
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted" id="small-isbn">{{ p1.ISBN }}</small>

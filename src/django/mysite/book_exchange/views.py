@@ -10,7 +10,8 @@ from rest_framework import viewsets, status, serializers, permissions
 
 from .serializers import BookForSaleSerializer, PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
 
-from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale #, PinnedBook, Transaction, SchoolUsesBook
+from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale
+from .forms import SellForm
 
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
@@ -41,9 +42,9 @@ class BuyView(generic.DetailView):
     model = User
     template_name = 'book_exchange/User_Buy_Page.html'
 
-class SellView(generic.DetailView):
-    model = User
-    template_name = 'book_exchange/User_Sell_Forum.html'
+#class SellView(generic.DetailView):
+#    model = User
+#    template_name = 'book_exchange/User_Sell_Forum.html'
 
 class ProfileView(generic.DetailView):
     model = User
@@ -77,6 +78,22 @@ def browse_books(request, pk):
 
     mylist = zip(book, books)
     return render(request, 'book_exchange/User_Buy_Page.html', {'mylist' : mylist})
+
+def sell_view(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+
+    context = {}
+
+    form = SellForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        form.save()
+
+    context['form'] = form
+    return render(request, "book_exchange/User_Sell_Forum.html", context)
 
 """
 API CALLS, FOR DATABASE COMMUNICATION
