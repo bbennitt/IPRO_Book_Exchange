@@ -27,10 +27,10 @@ urlpatterns = [
     path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('<int:pk>/', views.MainView.as_view(), name='main'),
     path('<int:pk>/buy/', views.browse_books, name='browse_books'),
-    path('<int:pk>/sell/', views.SellView.as_view(), name='sell'),
+    path('<user_id>/sell/', views.sell_view, name='sell_view'),
     path('<int:pk>/profile/', views.ProfileView.as_view(), name='profile'),
     path('<user_id>/buy/<book_for_sale_id>/', views.book_info, name='book_info'),
 
     #path('<user_id>/buy/<book_id>', , name='sell'),
-    #path('<user_id>/sell/', views.SellView.as_view(), name='sell'),
+    #path('<int:pk>/sell/', views.SellView.as_view(), name='sell'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
