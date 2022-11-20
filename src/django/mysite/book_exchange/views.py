@@ -11,7 +11,7 @@ from rest_framework import viewsets, status, serializers, permissions
 from .serializers import BookForSaleSerializer, PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
 
 from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale
-from .forms import SellForm
+from .forms import SellForm, BookForm
 
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
@@ -87,13 +87,20 @@ def sell_view(request, user_id):
 
     context = {}
 
-    form = SellForm(request.POST or None, request.FILES or None)
+    sellForm = SellForm(request.POST or None, request.FILES or None)
+    bookForm = BookForm(request.POST or None, request.FILES or None)
 
-    if form.is_valid():
-        form.save()
+    if sellForm.is_valid():
+        sellForm.save()
 
-    context['form'] = form
-    return render(request, "book_exchange/User_Sell_Forum.html", context)
+    if bookForm.is_valid():
+        bookForm.save()
+
+    context['sellForm'] = sellForm
+    context['bookForm'] = bookForm
+    
+    #return render(request, "book_exchange/User_Sell_Forum.html", context)
+    return render(request, "book_exchange/sell.html", context)
 
 """
 API CALLS, FOR DATABASE COMMUNICATION
