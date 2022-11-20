@@ -90,11 +90,12 @@ def sell_view(request, user_id):
     sellForm = SellForm(request.POST or None, request.FILES or None)
     bookForm = BookForm(request.POST or None, request.FILES or None)
 
-    if sellForm.is_valid():
-        sellForm.save()
-
-    #if bookForm.is_valid():
-     #   bookForm.save()
+    if bookForm.is_valid():
+        bookForm.save()
+        if sellForm.is_valid():
+            sellForm.save()
+        else:
+            print(f"FAIL: {sellForm}")
 
     context['sellForm'] = sellForm
     context['bookForm'] = bookForm
