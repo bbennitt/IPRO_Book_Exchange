@@ -44,13 +44,10 @@
                       <h1 id="small-book-title">{{ books.title }}</h1>
                     </div>
                   </div>
-                  <img src="https://via.placeholder.com/400" height="300" class="card-img-top" id="img-thumbnail">
+                  <img src={{ book.cover.url }} height="300" class="card-img-top" id="img-thumbnail">
                   <div class="card-body d-flex justify-content-between align-items-center overflow-auto">
                     <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Subject: {{ books.subject }}</span>
                     <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Topic: {{ books.topic }}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_1}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_2}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_3}</span>
                   </div>  
                   <div class="card-body d-flex flex-column align-items-center">
                         <p class="card-text" id="p-description">{{ book.comment }}</p>

@@ -1,5 +1,6 @@
 <!doctype html>
 {% load widget_tweaks %}
+{% load crispy_forms_tags %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -43,7 +44,7 @@
                         <option value="{Book Title}">
                       </datalist>
                     </div>
-                    <form action = "" method = "post">
+                    <!--  <form action = "" method = "post">
                         {% csrf_token %}
                         {{ sellForm.as_ul }}
                         <input type="submit" value=Submit>
@@ -52,47 +53,58 @@
                         {% csrf_token %}
                         {{ bookForm.as_ul }}
                         <input type="submit" value=Submit>
+                    </form> -->
+                    <form action = "" method = "post">
+                        {% csrf_token %}
                         <div class="d-flex justify-content-between align-items-center">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="input-edition" placeholder="{Edition_#}">
-                            <label for="input-edition">Edition #</label>
+                            <input class="form-control" placeholder="{Edition_#}" type="number" name="edition" value="0" required="" id="id_edition">
+                            <label for="id_edition">Edition #</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="input-isbn" placeholder="{ISBN}">
-                            <label for="input-isbn">ISBN #</label>
+                            <input class="form-control" type="text" name="ISBN" maxlength="100" required="" id="id_ISBN" placeholder="{ISBN}">
+                            <label for="id-isbn">ISBN #</label>
                         </div>
                         </div>
                         <div class="form-floating mb-3">
-                        <input class="form-control" id="input-author" placeholder="{Author_Name}">
-                        <label for="input-author">Author/s</label>
+                            <input class="form-control" type="text" name="author_first_name" maxlength="100" required="" id="id_author_first_name" placeholder="{Author_First_Name}">
+                            <label for="id-author_first_name">Author First Name</label>
                         </div>
-                        <select class="form-select mb-3" aria-label="Default select" {% render_field sellForm.book_condition class="form-control"%}>
-                        <option selected>Book Condition</option>
-                        <option value="1">Excellent</option>
-                        <option value="2">Good</option>
-                        <option value="3">Fair</option>
-                        <option value="4">Poor</option>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" name="author_last_name" maxlength="100" required="" id="id_author_last_name" placeholder="{Author_Last_Name}">
+                            <label for="input-author_last_name">Author Last Name</label>
+                        </div>
+                            <select class="form-select mb-3" name="book_condition" aria-label="Default select" id="id_book_condition">
+                            <option selected>Book Condition</option>
+                            <option value="1">Excellent</option>
+                            <option value="2">Good</option>
+                            <option value="3">Fair</option>
+                            <option value="4">Poor</option>
                         </select>
-                        <div class="mb-3"><input class="form-control" id="input-genre-tag" placeholder="Type Genre Names"></div>
-                        <div class="mb-3"><input class="form-control" id="input-topic-tag" placeholder="Type Topic Names"></div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="subject" maxlength="100" required="" id="id_subject" placeholder="Subject">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="topic" maxlength="100" required="" id="id_topic" placeholder="Topic">
+                        </div>
                         <div class="d-flex py-2">
                         <h2 class="text-muted" id="small-edition">USD $ </h2>
                         <div class="col-auto ms-3" >
-                            <input type="number" class="form-control py-2" id="input-price" placeholder="Enter Price">
+                            <input type="number" class="form-control py-2" name="price" value="0" step="any" required="" id="id_price" placeholder="Enter Price">
                         </div>
                         </div>
                         <div class="form-floating mb-3">
-                        <textarea class="form-control" id="input-description" rows="5"></textarea>
-                        <label for="input-description" class="form-label">Description</label>
+                            <textarea name="comment" class="form-control" rows="5" required="" id="id_comment"></textarea>
+                            <label for="id_comment" class="form-label">Description</label>
                         </div>
                         <div class="mb-3">
-                        <label for="input-picture-upload" class="form-label text-muted">Upload Pictures</label>
-                        <input class="form-control" type="file" id="input-picture-upload" multiple>
+                            <input class="form-control" type="file" name="cover" accept="image/*" id="id_cover">
+                            <label for="id_cover" class="form-label text-muted">Upload Pictures</label>
                         </div>
                     </form>
                   </div>
                   <div class="card-body align-items-center d-grid gap-2">
-                    <a href="#" class="btn btn-primary" type="button">Create Listing</a>
+                    <input class="btn btn-primary" type="submit" value="Create Listing">
                   </div>
                 </div>    
               </div>
