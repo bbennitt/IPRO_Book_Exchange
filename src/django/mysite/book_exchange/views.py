@@ -93,8 +93,8 @@ def sell_view(request, user_id):
     if sellForm.is_valid():
         sellForm.save()
 
-    if bookForm.is_valid():
-        bookForm.save()
+    #if bookForm.is_valid():
+     #   bookForm.save()
 
     context['sellForm'] = sellForm
     context['bookForm'] = bookForm
