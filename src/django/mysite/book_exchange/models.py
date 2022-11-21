@@ -38,26 +38,32 @@ class Book(models.Model):
     author_last_name = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
     topic = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.ISBN
-
-class BookForSale(models.Model):
-    ISBN = models.ForeignKey(Book, on_delete=models.RESTRICT)
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     book_condition = models.CharField(max_length=100)
     price = models.FloatField(default=0)
     comment = models.TextField()
     available = models.BooleanField(default=True)
     cover = models.ImageField(upload_to="book_exchange/media/covers/", default="book_exchange/media/covers/default.jpg")
-    #id = models.CharField(max_length=1000, primary_key=True, unique=True, editable=False)
 
     def __str__(self):
-        return "ISBN: " + self.ISBN.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
+        return "ISBN: " + self.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
+
+#class BookForSale(models.Model):
+#    ISBN = models.ForeignKey(Book, on_delete=models.RESTRICT)
+#    seller = models.ForeignKey(User, on_delete=models.CASCADE)
+#    book_condition = models.CharField(max_length=100)
+#    price = models.FloatField(default=0)
+#    comment = models.TextField()
+#    available = models.BooleanField(default=True)
+#    cover = models.ImageField(upload_to="book_exchange/media/covers/", default="book_exchange/media/covers/default.jpg")
+#    #id = models.CharField(max_length=1000, primary_key=True, unique=True, editable=False)
+#
+#    def __str__(self):
+#        return "ISBN: " + self.ISBN.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
 
 class PinnedBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    book_listing = models.ForeignKey(BookForSale, on_delete=models.RESTRICT)
+    book_listing = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
     def __str__(self):
         return "User: " + self.user.__str__() + " pinned " + self.book_listing.__str__()
@@ -71,7 +77,7 @@ class PinnedBook(models.Model):
 
 class Transaction(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.CASCADE)
-    book_listing = models.ForeignKey(BookForSale, on_delete=models.PROTECT)
+    book_listing = models.ForeignKey(Book, on_delete=models.PROTECT)
     time_sold = models.DateField('Transaction Date')
 
     def __str__(self):

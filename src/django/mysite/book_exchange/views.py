@@ -8,10 +8,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, status, serializers, permissions
 
-from .serializers import BookForSaleSerializer, PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
+from .serializers import PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
 
-from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale
-from .forms import SellForm, BookForm
+from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book #BookForSale
+from .forms import SellForm
 
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
@@ -57,12 +57,12 @@ def book_info(request, user_id, book_for_sale_id):
         raise Http404("User does not exist")
 
     try:
-        book = BookForSale.objects.get(pk=book_for_sale_id)
-    except BookForSale.DoesNotExist:
+        book = Book.objects.get(pk=book_for_sale_id)
+    except Book.DoesNotExist:
         raise Http404("Book for sale does not exist")
 
     try:
-        book_info = BookForSale.objects.get(pk=book_for_sale_id)
+        book_info = Book.objects.get(pk=book_for_sale_id)
         books = Book.objects.get(pk=book_info.ISBN)
     except Book.DoesNotExist:
         raise Http404("Book not part of database")
@@ -71,12 +71,9 @@ def book_info(request, user_id, book_for_sale_id):
 
 def browse_books(request, pk):
 
-    book = BookForSale.objects.all()
+    book = Book.objects.all()
 
-
-    books = Book.objects.all()
-
-    mylist = zip(book, books)
+    mylist = [book]
     return render(request, 'book_exchange/User_Buy_Page.html', {'mylist' : mylist})
 
 def sell_view(request, user_id):
@@ -88,17 +85,13 @@ def sell_view(request, user_id):
     context = {}
 
     sellForm = SellForm(request.POST or None, request.FILES or None)
-    bookForm = BookForm(request.POST or None, request.FILES or None)
 
-    if bookForm.is_valid():
-        bookForm.save()
-        if sellForm.is_valid():
-            sellForm.save()
-        else:
-            print(f"FAIL: {sellForm}")
+    if sellForm.is_valid():
+        sellForm.save()
+    else:
+        print(f"FAIL: {sellForm}")
 
     context['sellForm'] = sellForm
-    context['bookForm'] = bookForm
     
     #return render(request, "book_exchange/User_Sell_Forum.html", context)
     return render(request, "book_exchange/sell.html", context)
@@ -133,14 +126,6 @@ class BookViewSet(viewsets.ModelViewSet):
     #permission_classes = [permissions.IsAuthenticated]
 
 #I'm not sure how we need these in the backend, but implemented just in case
-
-class BookForSaleViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows books_for_sale to be viewed or edited.
-    """
-    queryset = BookForSale.objects.all()
-    serializer_class = BookForSaleSerializer
-    #permission_classes = [permissions.IsAuthenticated]
 
 class PinnedBookViewSet(viewsets.ModelViewSet):
     """
