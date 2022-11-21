@@ -2,8 +2,8 @@ from configparser import ExtendedInterpolation
 from email.policy import default
 from django.db import models
 from django.forms import IntegerField
-from matplotlib.pyplot import title
-from matplotlib.style import available
+#from matplotlib.pyplot import title
+#from matplotlib.style import available
 
 # some of these fields we may want a drop down to select. How do we do this?
 # See this stack overflow to implement: https://stackoverflow.com/questions/18676156/how-to-properly-use-the-choices-field-option-in-django
@@ -41,7 +41,7 @@ class Book(models.Model):
     topic = models.CharField(max_length=100)
 
     def __str__(self):
-        return "ISBN: " + self.ISBN + "\nTitle: " + self.title
+        return self.ISBN
 
 class BookForSale(models.Model):
     ISBN = models.ForeignKey(Book, on_delete=models.RESTRICT)
@@ -50,6 +50,7 @@ class BookForSale(models.Model):
     price = models.FloatField(default=0)
     comment = models.TextField()
     available = models.BooleanField(default=True)
+    id = models.CharField(max_length=1000, primary_key=True, unique=True, editable=False)
 
     def __str__(self):
         return "ISBN: " + self.ISBN.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
