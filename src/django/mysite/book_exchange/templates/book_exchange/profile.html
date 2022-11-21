@@ -1,170 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>profile-page</title>
-    <style>
-        .a2{
-           font-size: 20px; text-decoration:none;
-           
-        }
-        H3{
-            margin: 20px auto;
-            width: 400px;
-            height: 30px;
-            background-color: forestgreen;
-            text-align: center;
-            color: white;
-        }
-        .ix{float: left;}
-        .a3{
-            font-size: 20px;
-            margin-top: 60px;
-            margin-left: 10px;
-           
-        }
-
-        .JA{
-            font-size: 20px;
-            margin-left: 30px;
-            margin-top: 60px;
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            text-align: center;
-            float:left;
-            border: solid green;
-
-        }
-
-        .Int{
-            font-size: 20px;
-            margin-top: 60px;
-            margin-left: 150px;
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            text-align: center;
-            float:left;
-            border: solid green;
-
-        }
-        .JO{
-            font-size: 20px;
-            margin-top: 60px;
-            margin-left: 150px;
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            text-align: center;
-            float:left;
-            border: solid green;
-
-        }
-        
-        .ed{
-            font-size: 20px;
-            position: absolute;
-            bottom:0;
-            right:20px;
-
-        }
-		
-		.booktable{
-			width:1000px;
-			height:100px;
-			margin:0 auto;
-		}
-
-    
-
-    </style>
-</head>
-<body>
-  
-     <div class="a2">
-         <a  href="https://blog.csdn.net/weixin_45630258/article/details/122501624">return</a>
-    </div>
-    
-   <H3>Profile</H3>
-     <div class="ix"> <img src="https://img1.baidu.com/it/u=3092625331,3016860992&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="" title="picture" width="350" height="300"> </div>
-     
-
-     <div class="a3">
-        <p>
-            <label class="la1" >&nbsp &nbsp  &nbsp &nbsp  &nbsp Name: &nbsp</label> {{ name }}
-            
-        </p>
-    
-        <p>
-            <label class="la2" >&nbsp  &nbsp  &nbsp &nbsp  &nbsp College: &nbsp</label> {{ college }}
-    
-         <p>
-            <label class="la3" >&nbsp  &nbsp  &nbsp &nbsp  &nbsp Email: &nbsp </label> {{ email }}
-         </p>
-    
-         <p>
-            <label class="la4" >&nbsp  &nbsp  &nbsp &nbsp  &nbsp Year: &nbsp </label> {{ year }}
-         </p>
-    
-         <p>
-            <label class="la5" >&nbsp  &nbsp  &nbsp &nbsp  &nbsp Age: &nbsp </label> {{ age }}
-         </p>
-        
-         <p>
-            <label class="la6" >&nbsp  &nbsp  &nbsp &nbsp  &nbsp Address: &nbsp </label> {{ address }}
-         </p>
-        
-
-    </div>
-
-   <!-- 
-    <p class="JA">Jobs Applied: {{ jobsapplied }}</p>
-    <p class="Int">Interviews: {{ interviews }}</p>
-    <p class="JO">Job offers: {{ joboffers }}</p> -->
-	
-	<table class="booktable" border="1">
-    <thead>
-    <tr>
-		<th>Book Name</th>
-        <th>ISBN</th>
-    </tr>
-    </thead>
-    <tbody id="j_tbData">
-        <!--<tr>-->
-            <!--<td>1</td>-->
-            <!--<td>2</td>-->
-        <!--</tr>-->
-    </tbody>
-	</table>
-
-    <p class="ed">
-        <a  href="C:\Users\Peter Li\Desktop\profile-edit.html">edit</a>
-    </p>
-
-
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script>
-        $(function () {
-            var data = [{
-                name: "The little prince",
-                id: "1234567890",
-            }, {
-                name: "Charlotte's Web",
-                id: "1234567890",
-            }, {
-                name: "Flipped",
-                id: "1234567890",
-            }];
-            var str = "";
-            for(var i=0;i<data.length;i++){
-                str += "<tr><td>"+data[i].name+"</td><td>"+data[i].id+"</td></tr>";
-            }
-            $("#j_tbData").html(str);    
-        })
-    </script>   
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>Textbook Exchange - Profile</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- boxicon -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><i class='bx bx-search-alt'></i> Textbook Exchange</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-link" aria-current="page" href="User_Buy_Page.html">Buy</a>
+                      <a class="nav-link" href="User_Sell_Forum.html">Sell</a>
+                      <a class="nav-link active" href="profile.html">Profile</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="a2">
+                <a  href="https://blog.csdn.net/weixin_45630258/article/details/122501624">return</a>
+            </div>
+            <section class="py-5 container">
+              <div class="col-12 col-md-9 col-lg-6 mx-auto">
+                <div class="card shadow-sm">
+                  <div class="card-body align-items-center d-grid gap-2">
+                    <h2 class="text-center mb-3">Profile</h1>
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
+                      <div>
+                        <img class="rounded-circle img mx-auto d-block" height="200" src="https://img1.baidu.com/it/u=3092625331,3016860992&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" data-holder-rendered="true">
+                      </div>
+                      <div class="row row-cols-2 mx-auto my-3">
+                        <small class="text-muted p-1" id="small-edition">Name: </small><small class="text-muted" id="small-edition">{Name}</small>
+                        <small class="text-muted p-1" id="small-edition">College: </small><small class="text-muted" id="small-edition">{College Name}</small>
+                        <small class="text-muted p-1" id="small-edition">Contact Email: </small><small class="text-muted" id="small-edition">{Email}</small>
+                        <small class="text-muted p-1" id="small-edition">School Year: </small><small class="text-muted" id="small-edition">{Year}</small>
+                        <small class="text-muted p-1" id="small-edition">Age: </small><small class="text-muted" id="small-edition">{Age}</small>
+                        <small class="text-muted p-1" id="small-edition">Address: </small><small class="text-muted" id="small-edition">{Address}</small>
+                       </div>
+                    </div>
+                    <h5 class="text-center mt-3 text-muted">Listed Books</h5>
+                    <table class="booktable table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Book Name</th>
+                                <th>ISBN</th>
+                            </tr>
+                        </thead>
+                        <tbody id="j_tbData">
+                            <!--<tr>-->
+                                <!--<td>1</td>-->
+                                <!--<td>2</td>-->
+                            <!--</tr>-->
+                        </tbody>
+                    </table>
+                    <button type="button" onclick="location.href = 'profile-edit.html';" class="btn btn-secondary">
+                        <i class='bx bx-edit'></i>
+                            Edit
+                    </button>
+                    <button type="button" onclick="location.href = 'signin.html';" class="btn btn-primary">
+                        <i class='bx bx-log-out'></i>
+                            Log Out
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script>
+            $(function () {
+                var data = [{
+                    name: "The little prince",
+                    id: "1234567890",
+                }, {
+                    name: "Charlotte's Web",
+                    id: "1234567890",
+                }, {
+                    name: "Flipped",
+                    id: "1234567890",
+                }];
+                var str = "";
+                for(var i=0;i<data.length;i++){
+                    str += "<tr><td>"+data[i].name+"</td><td>"+data[i].id+"</td></tr>";
+                }
+                $("#j_tbData").html(str);    
+            })
+        </script>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
 </html>
