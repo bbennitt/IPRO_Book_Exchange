@@ -29,39 +29,38 @@
       <div class="py-5 container">
         <div class="row align-items-center">
             <div class="col-12 col-md-9 col-lg-5 mx-auto">
+              {% block content %}
                 <div class="card border">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                      <span class="badge text-bg-success" id="badge-condition">{Condition}</span>
-                      <small class="text-muted" id="small-isbn">{ISBN_#}</small>
+                      <span class="badge text-bg-success" id="badge-condition">{{ book.book_condition }}</span>
+                      <small class="text-muted" id="small-isbn">{{ book.ISBN }}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center py-2">
-                      <small class="text-muted" id="small-edition">{Edition_#}</small>
-                      <small class="text-muted" id="small-author">{Author_Name}</small>
+                      <small class="text-muted" id="small-edition">{{ book.edition }}</small>
+                      <small class="text-muted" id="small-author">{{ book.author_first_name }}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                      <h1 id="small-book-title">{Book_Title}</h1>
+                      <h1 id="small-book-title">{{ books.title }}</h1>
                     </div>
                   </div>
-                  <img src="https://via.placeholder.com/400" height="300" class="card-img-top" id="img-thumbnail">
+                  <img src={{ book.cover.url }} height="300" class="card-img-top" id="img-thumbnail">
                   <div class="card-body d-flex justify-content-between align-items-center overflow-auto">
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Genre_Tag_1}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Genre_Tag_2}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_1}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_2}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_3}</span>
+                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Subject: {{ books.subject }}</span>
+                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Topic: {{ books.topic }}</span>
                   </div>  
                   <div class="card-body d-flex flex-column align-items-center">
-                        <p class="card-text" id="p-description">{description}</p>
+                        <p class="card-text" id="p-description">{{ book.comment }}</p>
                     </div>
                     <div class="card-body d-flex justify-content-between align-items-center">
-                      <h1 class="card-title pricing-card-title" id="h3-price">${0.00} <small class="text-muted">USD</small></h1>
-                      <small class="text-muted" id="small-seller">{Seller_Name}</small>
+                      <h1 class="card-title pricing-card-title" id="h3-price">${{ book.price }} <small class="text-muted">USD</small></h1>
+                      <small class="text-muted" id="small-seller">{{ book.seller }}</small>
                     </div>
                     <div class="card-body align-items-center d-grid gap-2">
                         <a href="#" class="btn btn-primary" type="button">Message Seller</a>
                     </div>
                 </div>
+                {% endblock %}
             </div>
         </div>
     </div>
