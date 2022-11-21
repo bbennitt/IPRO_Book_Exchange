@@ -16,8 +16,6 @@ router.register(r'user', views.UserViewSet)
 router.register(r'book', views.BookViewSet)
 router.register(r'pinned_book', views.PinnedBookViewSet)
 router.register(r'transaction', views.TransactionViewSet)
-router.register(r'school_uses_book', views.SchoolUsesBookViewSet)
-
 
 
 urlpatterns = [

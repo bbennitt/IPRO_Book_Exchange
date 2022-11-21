@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import School, User, Book, PinnedBook, Transaction, SchoolUsesBook
+from .models import School, User, Book, PinnedBook, Transaction
 
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,8 +27,3 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['buyer', 'book_listing', 'time_sold']
-
-class SchoolUsesBookSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SchoolUsesBook
-        fields = ['school_name', 'ISBN', 'department', 'course']

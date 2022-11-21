@@ -15,15 +15,15 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class='bx bx-search-alt'></i> Textbook Exchange</a>
+        <a class="navbar-brand" href="../"><i class='bx bx-search-alt'></i> Textbook Exchange</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link disabled">Buy</a>
-            <a class="nav-link disabled">Sell</a>
-            <a class="nav-link disabled">Account</a>
+            <a class="nav-link active" href="../buy/">Buy</a>
+            <a class="nav-link active" aria-current="page" href="#">Sell</a>
+            <a class="nav-link active" href="../profile/">Account</a>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
                         {{ sellForm.as_ul }}
                         <input type="submit" value=Submit>
                     </form> -->
-                    <form action = "" method = "post">
+                    <form enctype="multipart/form-data" method="post" action="">
                         {% csrf_token %}
                         <div class="mb-3">
                             <input type="text" name="title" maxlength="255" required="" id="id_title" placeholder="Book Title" class="form-control form-control-lg">
@@ -67,10 +67,10 @@
                         </div>
                             <select class="form-select mb-3" name="book_condition" aria-label="Default select" id="id_book_condition">
                             <option selected>Book Condition</option>
-                            <option value="1">Excellent</option>
-                            <option value="2">Good</option>
-                            <option value="3">Fair</option>
-                            <option value="4">Poor</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Poor">Poor</option>
                         </select>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="subject" maxlength="100" required="" id="id_subject" placeholder="Subject">
@@ -81,7 +81,7 @@
                         <div class="d-flex py-2">
                         <h2 class="text-muted" id="small-edition">USD $ </h2>
                         <div class="col-auto ms-3" >
-                            <input type="number" class="form-control py-2" name="price" value="0" step="any" required="" id="id_price" placeholder="Enter Price">
+                            <input type="number" class="form-control py-2" name="price" min="0.01" step="0.01" value="0" required="" id="id_price" placeholder="Enter Price">
                         </div>
                         </div>
                         <div class="form-floating mb-3">
@@ -89,7 +89,7 @@
                             <label for="id_comment" class="form-label">Description</label>
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" type="file" name="cover" accept="image/*" id="id_cover">
+                            <input class="form-control" type="file" name="cover" id="id_cover">
                             <label for="id_cover" class="form-label text-muted">Upload Pictures</label>
                         </div>
                         <div class="card-body align-items-center d-grid gap-2">

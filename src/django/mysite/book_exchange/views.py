@@ -8,9 +8,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, status, serializers, permissions
 
-from .serializers import PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
+from .serializers import PinnedBookSerializer, SchoolSerializer, TransactionSerializer, UserSerializer, BookSerializer
 
-from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book #BookForSale
+from .models import PinnedBook, School, Transaction, User, Book #BookForSale
 from .forms import SellForm
 
 # each view is a different "template" for what we display on the webpage
@@ -61,19 +61,13 @@ def book_info(request, user_id, book_for_sale_id):
     except Book.DoesNotExist:
         raise Http404("Book for sale does not exist")
 
-    try:
-        book_info = Book.objects.get(pk=book_for_sale_id)
-        books = Book.objects.get(pk=book_info.ISBN)
-    except Book.DoesNotExist:
-        raise Http404("Book not part of database")
-
-    return render(request, 'book_exchange/Book_ID.html', {'book': book, 'books' : books})
+    return render(request, 'book_exchange/Book_ID.html', {'book': book})
 
 def browse_books(request, pk):
 
     book = Book.objects.all()
 
-    mylist = [book]
+    mylist = book
     return render(request, 'book_exchange/User_Buy_Page.html', {'mylist' : mylist})
 
 def sell_view(request, user_id):
@@ -84,16 +78,17 @@ def sell_view(request, user_id):
 
     context = {}
 
-    sellForm = SellForm(request.POST or None, request.FILES or None)
+    book = Book(seller=user)
+
+    sellForm = SellForm(request.POST or None, request.FILES, instance=book)
 
     if sellForm.is_valid():
         sellForm.save()
     else:
-        print(f"FAIL: {sellForm}")
+        pass
 
     context['sellForm'] = sellForm
-    
-    #return render(request, "book_exchange/User_Sell_Forum.html", context)
+
     return render(request, "book_exchange/sell.html", context)
 
 """
@@ -141,14 +136,6 @@ class TransactionViewSet(viewsets.ModelViewSet):
     """
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
-    #permission_classes = [permissions.IsAuthenticated]
-
-class SchoolUsesBookViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows school_uses_book's to be viewed or edited.
-    """
-    queryset = SchoolUsesBook.objects.all()
-    serializer_class = SchoolUsesBookSerializer
     #permission_classes = [permissions.IsAuthenticated]
 
 # @api_view(['GET'])

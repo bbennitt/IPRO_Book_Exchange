@@ -31,7 +31,7 @@ class User(models.Model):
         return self.first_name + " " + self.last_name
 
 class Book(models.Model):
-    ISBN = models.CharField(max_length=100, primary_key=True)
+    ISBN = models.CharField(max_length=100)
     title = models.CharField(max_length=255)
     edition = models.IntegerField(default=0)
     author_first_name = models.CharField(max_length=100)
@@ -43,7 +43,7 @@ class Book(models.Model):
     price = models.FloatField(default=0)
     comment = models.TextField()
     available = models.BooleanField(default=True)
-    cover = models.ImageField(upload_to="book_exchange/media/covers/", default="book_exchange/media/covers/default.jpg")
+    cover = models.ImageField(upload_to="media/covers/", default="media/covers/default.jpg")
 
     def __str__(self):
         return "ISBN: " + self.ISBN + "\nSeller: " + self.seller.first_name + " " + self.seller.last_name
@@ -89,20 +89,3 @@ class Transaction(models.Model):
                 fields=['buyer_id', 'book_listing_id'], name='unique_buyer_book_listing_combination'
             )
         ]
-
-class SchoolUsesBook(models.Model):
-    school_name = models.ForeignKey(School, on_delete=models.CASCADE)
-    ISBN = models.ForeignKey(Book, on_delete=models.CASCADE)
-    department = models.CharField(max_length=100)
-    course = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.school_name.__str__() + " uses " + self.ISBN.__str__()
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['school_name', 'ISBN'], name='unique_school_ISBN_combination'
-            )
-        ]
-
