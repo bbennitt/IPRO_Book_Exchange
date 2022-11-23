@@ -8,9 +8,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, status, serializers, permissions
 
-from .serializers import BookForSaleSerializer, PinnedBookSerializer, SchoolSerializer, SchoolUsesBookSerializer, TransactionSerializer, UserSerializer, BookSerializer
+from .serializers import PinnedBookSerializer, SchoolSerializer, TransactionSerializer, UserSerializer, BookSerializer
 
-from .models import PinnedBook, School, SchoolUsesBook, Transaction, User, Book, BookForSale #, PinnedBook, Transaction, SchoolUsesBook
+from .models import PinnedBook, School, Transaction, User, Book #BookForSale
+from .forms import SellForm
 
 # each view is a different "template" for what we display on the webpage
 # for example, main page, sell page, buy page, info page, etc.
@@ -41,9 +42,9 @@ class BuyView(generic.DetailView):
     model = User
     template_name = 'book_exchange/User_Buy_Page.html'
 
-class SellView(generic.DetailView):
-    model = User
-    template_name = 'book_exchange/User_Sell_Forum.html'
+#class SellView(generic.DetailView):
+#    model = User
+#    template_name = 'book_exchange/User_Sell_Forum.html'
 
 class ProfileView(generic.DetailView):
     model = User
@@ -56,27 +57,39 @@ def book_info(request, user_id, book_for_sale_id):
         raise Http404("User does not exist")
 
     try:
-        book = BookForSale.objects.get(pk=book_for_sale_id)
-    except BookForSale.DoesNotExist:
+        book = Book.objects.get(pk=book_for_sale_id)
+    except Book.DoesNotExist:
         raise Http404("Book for sale does not exist")
 
-    try:
-        book_info = BookForSale.objects.get(pk=book_for_sale_id)
-        books = Book.objects.get(pk=book_info.ISBN)
-    except Book.DoesNotExist:
-        raise Http404("Book not part of database")
-
-    return render(request, 'book_exchange/Book_ID.html', {'book': book, 'books' : books})
+    return render(request, 'book_exchange/Book_ID.html', {'book': book})
 
 def browse_books(request, pk):
 
-    book = BookForSale.objects.all()
+    book = Book.objects.all()
 
-
-    books = Book.objects.all()
-
-    mylist = zip(book, books)
+    mylist = book
     return render(request, 'book_exchange/User_Buy_Page.html', {'mylist' : mylist})
+
+def sell_view(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+
+    context = {}
+
+    book = Book(seller=user)
+
+    sellForm = SellForm(request.POST or None, request.FILES, instance=book)
+
+    if sellForm.is_valid():
+        sellForm.save()
+    else:
+        pass
+
+    context['sellForm'] = sellForm
+
+    return render(request, "book_exchange/sell.html", context)
 
 """
 API CALLS, FOR DATABASE COMMUNICATION
@@ -109,14 +122,6 @@ class BookViewSet(viewsets.ModelViewSet):
 
 #I'm not sure how we need these in the backend, but implemented just in case
 
-class BookForSaleViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows books_for_sale to be viewed or edited.
-    """
-    queryset = BookForSale.objects.all()
-    serializer_class = BookForSaleSerializer
-    #permission_classes = [permissions.IsAuthenticated]
-
 class PinnedBookViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows pinned_books to be viewed or edited.
@@ -131,14 +136,6 @@ class TransactionViewSet(viewsets.ModelViewSet):
     """
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
-    #permission_classes = [permissions.IsAuthenticated]
-
-class SchoolUsesBookViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows school_uses_book's to be viewed or edited.
-    """
-    queryset = SchoolUsesBook.objects.all()
-    serializer_class = SchoolUsesBookSerializer
     #permission_classes = [permissions.IsAuthenticated]
 
 # @api_view(['GET'])

@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <link rel="stylesheet" href="{% static 'book_exchange/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'book_exchange/book_details.css' %}">
-    <title>Textbook Exchange - Book ID</title>
+    <link rel="stylesheet" href="{% static 'book_exchange/user_buy_page.css' %}">
+    <title>BuyBooks.com - Buy</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Textbook Exchange</a>
+        <a class="navbar-brand" href="../../"><i class='bx bx-search-alt'></i> BuyBooks.com</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Buy</a>
-            <a class="nav-link" href="#">Sell</a>
-            <a class="nav-link disabled">Account</a>
+            <a class="nav-link active" aria-current="page" href="../">Buy</a>
+            <a class="nav-link active" href="../../sell/">Sell</a>
+            <a class="nav-link active" href="../../profile/">Account</a>
           </div>
         </div>
       </div>
@@ -34,23 +35,20 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="badge text-bg-success" id="badge-condition">{{ book.book_condition }}</span>
-                      <small class="text-muted" id="small-isbn">{{ book.ISBN }}</small>
+                      <small class="text-muted" id="small-isbn">ISBN: {{ book.ISBN }}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center py-2">
-                      <small class="text-muted" id="small-edition">{{ book.edition }}</small>
-                      <small class="text-muted" id="small-author">{{ book.author_first_name }}</small>
+                      <small class="text-muted" id="small-edition">Edition: {{ book.edition }}</small>
+                      <small class="text-muted" id="small-author">Author: {{ book.author_first_name }} {{book.author_last_name}}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                      <h1 id="small-book-title">{{ books.title }}</h1>
+                      <h1 id="small-book-title">{{ book.title }}</h1>
                     </div>
                   </div>
-                  <img src="https://via.placeholder.com/400" height="300" class="card-img-top" id="img-thumbnail">
+                  <img src="/book_exchange{{ book.cover.url }}" height="300" class="card-img-top" id="img-thumbnail">
                   <div class="card-body d-flex justify-content-between align-items-center overflow-auto">
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Subject: {{ books.subject }}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Topic: {{ books.topic }}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_1}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_2}</span>
-                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">{Topic_Tag_3}</span>
+                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Subject: {{ book.subject }}</span>
+                    <span class="badge rounded-pill border border-dark text-bg-light p-2" id="badge-info">Topic: {{ book.topic }}</span>
                   </div>  
                   <div class="card-body d-flex flex-column align-items-center">
                         <p class="card-text" id="p-description">{{ book.comment }}</p>
