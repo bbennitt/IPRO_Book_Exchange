@@ -7,13 +7,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'book_exchange/styles.css' %}">
     <link rel="stylesheet" href="{% static 'book_exchange/user_buy_page.css' %}">
-    <title>Textbook Exchange - Buy</title>
+    <title>BuyBooks.com - Buy</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../../"><i class='bx bx-search-alt'></i> Textbook Exchange</a>
+        <a class="navbar-brand" href="../../"><i class='bx bx-search-alt'></i> BuyBooks.com</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,11 +35,11 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="badge text-bg-success" id="badge-condition">{{ book.book_condition }}</span>
-                      <small class="text-muted" id="small-isbn">{{ book.ISBN }}</small>
+                      <small class="text-muted" id="small-isbn">ISBN: {{ book.ISBN }}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center py-2">
-                      <small class="text-muted" id="small-edition">{{ book.edition }}</small>
-                      <small class="text-muted" id="small-author">{{ book.author_first_name }}</small>
+                      <small class="text-muted" id="small-edition">Edition: {{ book.edition }}</small>
+                      <small class="text-muted" id="small-author">Author: {{ book.author_first_name }} {{book.author_last_name}}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                       <h1 id="small-book-title">{{ book.title }}</h1>
