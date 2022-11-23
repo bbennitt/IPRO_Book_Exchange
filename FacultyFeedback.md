@@ -66,5 +66,12 @@
 - For the dry run week, I'll give you about an hour of time to organize yourselves via team work time and then we'll all come back to the main room and I'll pick teams to present in random order
 
 ## Week 14 ##
+- Nice hand off from introduction to the problem slide (calling presenter by name)
+- Like the basic personas you provide
+- Really like the colors and layout of slides
+- Like the "Nate is going buy a book"!
+- Like - Lucy is going to sell a book
+- Like the way you talk through messaging the sell
+- Pretty complete demo
 
 ## Week 15 ##
